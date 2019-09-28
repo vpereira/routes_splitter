@@ -1,4 +1,6 @@
-require "routes_splitter/railtie"
+# frozen_string_literal: true
+
+require 'routes_splitter/railtie'
 
 module RoutesSplitter
   extend ActiveSupport::Concern
@@ -6,17 +8,17 @@ module RoutesSplitter
     RoutesNotFound = Class.new(StandardError)
 
     def draw(routes_name)
-      draw_route(routes_path("#{routes_name}_routes.rb")) || raise(RoutesNotFound.new(routes_path("#{routes_name}_routes.rb")))
+      draw_route(routes_path("#{routes_name}_routes.rb")) || raise(RoutesNotFound, routes_path("#{routes_name}_routes.rb"))
     end
 
     # path should be configurable
     def routes_path(routes_file)
-      Rails.root.join("app", "routes", routes_file)
+      Rails.root.join('app', 'routes', routes_file)
     end
 
     def draw_route(path)
       if File.exist?(path)
-        instance_eval(File.read(path)) 
+        instance_eval(File.read(path))
         true
       else
         false

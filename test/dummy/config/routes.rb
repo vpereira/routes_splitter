@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # it should move to a initializer
 class ActionDispatch::Routing::Mapper
   include RoutesSplitter
