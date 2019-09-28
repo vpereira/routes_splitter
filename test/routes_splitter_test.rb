@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class RoutesSplitter::Test < ActionDispatch::IntegrationTest
+  test "home_path exists" do
+    Rails.application.routes.draw { draw 'api'}
+    assert_routing root_path, controller: 'application', action: 'home'
+  end
+  
   test "home_with_splitter_accessible" do
     Rails.application.routes.draw { draw 'api'}
     get root_path, params: { format: :json }
