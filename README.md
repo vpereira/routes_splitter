@@ -1,5 +1,22 @@
 # RoutesSplitter
 
+> **This project is archived and no longer maintained.**
+>
+> Rails 6.1+ includes a built-in `draw` method that provides this functionality natively. This gem was designed for Rails 6.0, which reached end-of-life in June 2023.
+>
+> **For Rails 6.1+, use the native approach:**
+> ```ruby
+> # config/routes.rb
+> Rails.application.routes.draw do
+>   draw(:api)   # loads config/routes/api.rb
+>   draw(:admin) # loads config/routes/admin.rb
+> end
+> ```
+>
+> See the [Rails routing documentation](https://api.rubyonrails.org/classes/ActionDispatch/Routing.html) for details.
+
+---
+
 `routes_splitter` is a gem designed to help you manage your Rails application's routes by splitting a large `routes.rb` file into smaller, more manageable files, typically organized by topic (e.g., `api`, `webui`, etc.).
 
 ## Usage
